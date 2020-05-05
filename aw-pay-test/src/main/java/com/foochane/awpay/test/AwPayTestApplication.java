@@ -1,13 +1,13 @@
-package com.foochane.awpay;
+package com.foochane.awpay.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AwPayApplication {
+public class AwPayTestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AwPayApplication.class, args);
+        SpringApplication.run(AwPayTestApplication.class, args);
     }
 
 }

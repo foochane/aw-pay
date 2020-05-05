@@ -1,4 +1,4 @@
-package com.foochane.awpay.controller;
+package com.foochane.awpay.test.controller;
 
 
 import com.alipay.api.AlipayApiException;
@@ -6,7 +6,7 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.*;
-import com.foochane.awpay.config.AlipayConfig;
+import com.foochane.awpay.test.config.MyAliPayConfig;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +24,7 @@ import java.util.Map;
  * Created by foochane on 2020/5/2.
  */
 
-@RequestMapping("alipay")
+@RequestMapping("ali")
 @Controller
 public class AlipayController {
 
@@ -35,13 +35,13 @@ public class AlipayController {
                      HttpServletResponse httpResponse) throws IOException {
 
         // 1 创建AlipayClient
-        AlipayClient alipayClient =  new DefaultAlipayClient(  AlipayConfig.gatewayUrl,
-                AlipayConfig.app_id,
-                AlipayConfig.merchant_private_key,
+        AlipayClient alipayClient =  new DefaultAlipayClient(  MyAliPayConfig.gatewayUrl,
+                MyAliPayConfig.app_id,
+                MyAliPayConfig.merchant_private_key,
                 "json",
-                AlipayConfig.charset,
-                AlipayConfig.alipay_public_key,
-                AlipayConfig.sign_type);
+                MyAliPayConfig.charset,
+                MyAliPayConfig.alipay_public_key,
+                MyAliPayConfig.sign_type);
 
 
         // 2 设置请求参数
@@ -56,8 +56,8 @@ public class AlipayController {
         // 该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天（1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点， 如 1.5h，可转换为 90m。
         String timeout_express = "10m";
         AlipayTradePagePayRequest alipayRequest =  new  AlipayTradePagePayRequest(); //创建API对应的request
-        alipayRequest.setReturnUrl(AlipayConfig.return_url);
-        alipayRequest.setNotifyUrl(AlipayConfig.notify_url); //在公共参数中设置回跳和通知地址
+        alipayRequest.setReturnUrl(MyAliPayConfig.return_url);
+        alipayRequest.setNotifyUrl(MyAliPayConfig.notify_url); //在公共参数中设置回跳和通知地址
         alipayRequest.setBizContent("{\"out_trade_no\":\"" + out_trade_no + "\","
                 + "\"total_amount\":\"" + total_amount + "\","
                 + "\"subject\":\"" + subject + "\","
@@ -78,7 +78,7 @@ public class AlipayController {
         System.out.println(form);
         System.out.println("*************************** 支付请求成功 *******************************");
 
-        httpResponse.setContentType( "text/html;charset="  + AlipayConfig.charset);
+        httpResponse.setContentType( "text/html;charset="  + MyAliPayConfig.charset);
         httpResponse.getWriter().write(form); //直接将完整的表单html输出到页面
         httpResponse.getWriter().flush();
         httpResponse.getWriter().close();
@@ -116,9 +116,9 @@ public class AlipayController {
 
         // 调用SDK验证签名
         boolean signVerified = AlipaySignature.rsaCheckV1(params,
-                                                          AlipayConfig.alipay_public_key,
-                                                          AlipayConfig.charset,
-                                                          AlipayConfig.sign_type);
+                                                          MyAliPayConfig.alipay_public_key,
+                                                          MyAliPayConfig.charset,
+                                                          MyAliPayConfig.sign_type);
 
 
         // 验签成功
@@ -172,9 +172,9 @@ public class AlipayController {
         }
 
         boolean signVerified = AlipaySignature.rsaCheckV1(params,
-                                                          AlipayConfig.alipay_public_key,
-                                                          AlipayConfig.charset,
-                                                          AlipayConfig.sign_type); //调用SDK验证签名
+                                                          MyAliPayConfig.alipay_public_key,
+                                                          MyAliPayConfig.charset,
+                                                          MyAliPayConfig.sign_type); //调用SDK验证签名
 
         if (signVerified) {
 
@@ -237,7 +237,7 @@ public class AlipayController {
         System.out.println("订单查询...");
 
         //获得初始化的AlipayClient
-        AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
+        AlipayClient alipayClient = new DefaultAlipayClient(MyAliPayConfig.gatewayUrl, MyAliPayConfig.app_id, MyAliPayConfig.merchant_private_key, "json", MyAliPayConfig.charset, MyAliPayConfig.alipay_public_key, MyAliPayConfig.sign_type);
 
         //设置请求参数
         AlipayTradeQueryRequest alipayRequest = new AlipayTradeQueryRequest();
@@ -277,7 +277,7 @@ public class AlipayController {
         System.out.println("退款...");
 
         //获得初始化的AlipayClient
-        AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
+        AlipayClient alipayClient = new DefaultAlipayClient(MyAliPayConfig.gatewayUrl, MyAliPayConfig.app_id, MyAliPayConfig.merchant_private_key, "json", MyAliPayConfig.charset, MyAliPayConfig.alipay_public_key, MyAliPayConfig.sign_type);
 
         //设置请求参数
         AlipayTradeRefundRequest alipayRequest = new AlipayTradeRefundRequest();
@@ -315,7 +315,7 @@ public class AlipayController {
     public String refundQuery(String out_trade_no, String trade_no, String out_request_no){
         System.out.println("退款查询......");
         //获得初始化的AlipayClient
-        AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
+        AlipayClient alipayClient = new DefaultAlipayClient(MyAliPayConfig.gatewayUrl, MyAliPayConfig.app_id, MyAliPayConfig.merchant_private_key, "json", MyAliPayConfig.charset, MyAliPayConfig.alipay_public_key, MyAliPayConfig.sign_type);
 
         //设置请求参数
         AlipayTradeFastpayRefundQueryRequest alipayRequest = new AlipayTradeFastpayRefundQueryRequest();
@@ -349,7 +349,7 @@ public class AlipayController {
         System.out.println("交易关闭.....");
 
         //获得初始化的AlipayClient
-        AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
+        AlipayClient alipayClient = new DefaultAlipayClient(MyAliPayConfig.gatewayUrl, MyAliPayConfig.app_id, MyAliPayConfig.merchant_private_key, "json", MyAliPayConfig.charset, MyAliPayConfig.alipay_public_key, MyAliPayConfig.sign_type);
 
 
         //设置请求参数

@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.foochane</groupId>
-    <artifactId>aw-pay</artifactId>
+    <artifactId>aw-pay-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>aw-pay</name>
-    <description>aw-pay project for Spring Boot</description>
+    <name>aw-pay-test</name>
+    <description>aw-pay-test project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -48,6 +48,13 @@
             <version>4.9.124.ALL</version>
         </dependency>
 
+        <!-- 微信支付 第三方接口-->
+        <!-- https://github.com/Wechat-Group/WxJava -->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-pay</artifactId>
+            <version>3.7.0</version>
+        </dependency>
 
     </dependencies>
 
