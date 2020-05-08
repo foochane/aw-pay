@@ -1,4 +1,4 @@
-package com.foochane.awpay.test.controller;
+package com.foochane.awpay.controller;
 
 import com.github.binarywang.wxpay.bean.notify.WxPayNotifyResponse;
 import com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult;
