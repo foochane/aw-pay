@@ -8,3 +8,5 @@ sdk官方地址： https://github.com/alipay/alipay-sdk-java-all
 # 微信支付参考文档
 
 https://pay.weixin.qq.com/wiki/doc/api/index.html
+
+https://github.com/Wechat-Group/WxJava

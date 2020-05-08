@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,13 +25,13 @@ import java.util.Map;
  * Created by foochane on 2020/5/2.
  */
 
-@RequestMapping("ali")
-@Controller
+
+@RestController
 public class AlipayController {
 
 
     @ResponseBody
-    @RequestMapping(value = "pay",method = RequestMethod.GET)
+    @RequestMapping(value = "/ali/pay/order/create",method = RequestMethod.GET)
     public void pay (HttpServletRequest httpRequest,
                      HttpServletResponse httpResponse) throws IOException {
 
@@ -90,7 +91,7 @@ public class AlipayController {
      * return_url必须放在公网上
      */
     @ResponseBody
-    @RequestMapping("return.htm")
+    @RequestMapping("/ali/pay/return")
     public String returnUrl(HttpServletRequest httpRequest,
                             HttpServletResponse httpResponse) throws Exception {
 
@@ -147,7 +148,7 @@ public class AlipayController {
      * 支付宝服务器异步通知
      * notify_url必须放入公网
      */
-    @RequestMapping(value = "/notify.htm")
+    @RequestMapping(value = "/ali/pay/notify")
     @ResponseBody
     public String notify(HttpServletRequest request, HttpServletRequest response) throws Exception {
 
@@ -231,7 +232,7 @@ public class AlipayController {
      *
      */
     @ResponseBody
-    @RequestMapping(value = "query")
+    @RequestMapping(value = "/ali/pay/query")
     public String query(String out_trade_no,String trade_no){
 
         System.out.println("订单查询...");
@@ -271,7 +272,7 @@ public class AlipayController {
      *
      */
     @ResponseBody
-    @RequestMapping(value = "refund")
+    @RequestMapping(value = "/ali/pay/refund")
     public String refund(String out_trade_no,String trade_no,String refund_amount, String refund_reason, String out_request_no){
 
         System.out.println("退款...");
@@ -311,7 +312,7 @@ public class AlipayController {
      * @return result
      */
     @ResponseBody
-    @RequestMapping(value = "refund/query")
+    @RequestMapping(value = "/ali/pay/refund/query")
     public String refundQuery(String out_trade_no, String trade_no, String out_request_no){
         System.out.println("退款查询......");
         //获得初始化的AlipayClient
@@ -344,7 +345,7 @@ public class AlipayController {
      * @return result
      */
     @ResponseBody
-    @RequestMapping(value = "close")
+    @RequestMapping(value = "/ali/pay/close")
     public String close(String out_trade_no, String trade_no){
         System.out.println("交易关闭.....");
 

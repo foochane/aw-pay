@@ -52,7 +52,7 @@ public class WxPayController {
      * @return
      * @throws WxPayException
      */
-    @PostMapping("wx/order/notify")
+    @PostMapping("wx/pay/notify")
     public String parseOrderNotifyResult(@RequestBody String xmlData) throws WxPayException {
         final WxPayOrderNotifyResult notifyResult = this.wxPayService.parseOrderNotifyResult(xmlData);
         // TODO 根据自己业务场景需要构造返回对象
@@ -64,7 +64,7 @@ public class WxPayController {
      * @param transactionId 微信订单号
      * @param outTradeNo    商户系统内部的订单号，当没提供transactionId时需要传这个,两个参数二选一即可
      */
-    @GetMapping("/wx/par/order/query")
+    @GetMapping("/wx/pay/query")
     public WxPayOrderQueryResult queryOrder(@RequestParam(required = false) String transactionId,
                                             @RequestParam(required = false) String outTradeNo)
             throws WxPayException {
@@ -87,7 +87,7 @@ public class WxPayController {
      *               }
      * @return 退款操作结果
      */
-    @PostMapping("/wx/refund/order/create")
+    @PostMapping("/wx/pay/refund")
     public WxPayRefundResult refund(@RequestBody WxPayRefundRequest request) throws WxPayException {
         return this.wxPayService.refund(request);
     }
@@ -102,7 +102,7 @@ public class WxPayController {
      * @param refundId      微信退款单号
      * @return 退款信息
      */
-    @GetMapping("/wx/refund/order/query")
+    @GetMapping("/wx/pay/refund/query")
     public WxPayRefundQueryResult refundQuery(@RequestParam(required = false) String transactionId,
                                               @RequestParam(required = false) String outTradeNo,
                                               @RequestParam(required = false) String outRefundNo,
@@ -115,7 +115,7 @@ public class WxPayController {
      * 关闭订单
      * @param outTradeNo 商户系统内部的订单号
      */
-    @GetMapping("/wx/order/close{outTradeNo}")
+    @GetMapping("/wx/pay/close{outTradeNo}")
     public WxPayOrderCloseResult closeOrder(@PathVariable String outTradeNo) throws WxPayException {
         return this.wxPayService.closeOrder(outTradeNo);
     }
