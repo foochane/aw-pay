@@ -12,5 +12,5 @@ public interface PayService {
 
     String refund(OrderRefundRequest request);
 
-    String refundQuery(RefunQueryRequest request);
+    String refundQuery(RefundQueryRequest request);
 }

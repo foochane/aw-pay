@@ -37,7 +37,7 @@ public class PayController {
 
     @ResponseBody
     @RequestMapping(value = "/api/pay/refund/query",method = RequestMethod.POST)
-    public String query(@RequestBody RefunQueryRequest request)  {
+    public String query(@RequestBody RefundQueryRequest request)  {
         return payService.refundQuery(request);
     }
 }

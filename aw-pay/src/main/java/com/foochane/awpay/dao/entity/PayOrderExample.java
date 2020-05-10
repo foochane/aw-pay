@@ -235,63 +235,73 @@ public class PayOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeIsNull() {
-            addCriterion("pay_type is null");
+        public Criteria andPayChannelIsNull() {
+            addCriterion("pay_channel is null");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeIsNotNull() {
-            addCriterion("pay_type is not null");
+        public Criteria andPayChannelIsNotNull() {
+            addCriterion("pay_channel is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeEqualTo(Byte value) {
-            addCriterion("pay_type =", value, "payType");
+        public Criteria andPayChannelEqualTo(String value) {
+            addCriterion("pay_channel =", value, "payChannel");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeNotEqualTo(Byte value) {
-            addCriterion("pay_type <>", value, "payType");
+        public Criteria andPayChannelNotEqualTo(String value) {
+            addCriterion("pay_channel <>", value, "payChannel");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeGreaterThan(Byte value) {
-            addCriterion("pay_type >", value, "payType");
+        public Criteria andPayChannelGreaterThan(String value) {
+            addCriterion("pay_channel >", value, "payChannel");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeGreaterThanOrEqualTo(Byte value) {
-            addCriterion("pay_type >=", value, "payType");
+        public Criteria andPayChannelGreaterThanOrEqualTo(String value) {
+            addCriterion("pay_channel >=", value, "payChannel");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeLessThan(Byte value) {
-            addCriterion("pay_type <", value, "payType");
+        public Criteria andPayChannelLessThan(String value) {
+            addCriterion("pay_channel <", value, "payChannel");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeLessThanOrEqualTo(Byte value) {
-            addCriterion("pay_type <=", value, "payType");
+        public Criteria andPayChannelLessThanOrEqualTo(String value) {
+            addCriterion("pay_channel <=", value, "payChannel");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeIn(List<Byte> values) {
-            addCriterion("pay_type in", values, "payType");
+        public Criteria andPayChannelLike(String value) {
+            addCriterion("pay_channel like", value, "payChannel");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeNotIn(List<Byte> values) {
-            addCriterion("pay_type not in", values, "payType");
+        public Criteria andPayChannelNotLike(String value) {
+            addCriterion("pay_channel not like", value, "payChannel");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeBetween(Byte value1, Byte value2) {
-            addCriterion("pay_type between", value1, value2, "payType");
+        public Criteria andPayChannelIn(List<String> values) {
+            addCriterion("pay_channel in", values, "payChannel");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeNotBetween(Byte value1, Byte value2) {
-            addCriterion("pay_type not between", value1, value2, "payType");
+        public Criteria andPayChannelNotIn(List<String> values) {
+            addCriterion("pay_channel not in", values, "payChannel");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayChannelBetween(String value1, String value2) {
+            addCriterion("pay_channel between", value1, value2, "payChannel");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayChannelNotBetween(String value1, String value2) {
+            addCriterion("pay_channel not between", value1, value2, "payChannel");
             return (Criteria) this;
         }
 

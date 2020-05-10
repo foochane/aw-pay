@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.foochane.awpay.dao.entity.PayOrder">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="out_trade_no" jdbcType="VARCHAR" property="outTradeNo" />
-    <result column="pay_type" jdbcType="TINYINT" property="payType" />
+    <result column="pay_channel" jdbcType="VARCHAR" property="payChannel" />
     <result column="pay_amount" jdbcType="BIGINT" property="payAmount" />
     <result column="currency" jdbcType="VARCHAR" property="currency" />
     <result column="product_id" jdbcType="VARCHAR" property="productId" />
@@ -77,7 +77,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, out_trade_no, pay_type, pay_amount, currency, product_id, subject, body, extra, 
+    id, out_trade_no, pay_channel, pay_amount, currency, product_id, subject, body, extra, 
     out_refund_no, refund_amount, refund_reason, status, gmt_create, gmt_modified
   </sql>
   <select id="selectByExample" parameterType="com.foochane.awpay.dao.entity.PayOrderExample" resultMap="BaseResultMap">
@@ -111,13 +111,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.foochane.awpay.dao.entity.PayOrder">
-    insert into pay_order (id, out_trade_no, pay_type, 
+    insert into pay_order (id, out_trade_no, pay_channel, 
       pay_amount, currency, product_id, 
       subject, body, extra, 
       out_refund_no, refund_amount, refund_reason, 
       status, gmt_create, gmt_modified
       )
-    values (#{id,jdbcType=BIGINT}, #{outTradeNo,jdbcType=VARCHAR}, #{payType,jdbcType=TINYINT}, 
+    values (#{id,jdbcType=BIGINT}, #{outTradeNo,jdbcType=VARCHAR}, #{payChannel,jdbcType=VARCHAR}, 
       #{payAmount,jdbcType=BIGINT}, #{currency,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, 
       #{subject,jdbcType=VARCHAR}, #{body,jdbcType=VARCHAR}, #{extra,jdbcType=VARCHAR}, 
       #{outRefundNo,jdbcType=VARCHAR}, #{refundAmount,jdbcType=BIGINT}, #{refundReason,jdbcType=VARCHAR}, 
@@ -133,8 +133,8 @@
       <if test="outTradeNo != null">
         out_trade_no,
       </if>
-      <if test="payType != null">
-        pay_type,
+      <if test="payChannel != null">
+        pay_channel,
       </if>
       <if test="payAmount != null">
         pay_amount,
@@ -180,8 +180,8 @@
       <if test="outTradeNo != null">
         #{outTradeNo,jdbcType=VARCHAR},
       </if>
-      <if test="payType != null">
-        #{payType,jdbcType=TINYINT},
+      <if test="payChannel != null">
+        #{payChannel,jdbcType=VARCHAR},
       </if>
       <if test="payAmount != null">
         #{payAmount,jdbcType=BIGINT},
@@ -236,8 +236,8 @@
       <if test="record.outTradeNo != null">
         out_trade_no = #{record.outTradeNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.payType != null">
-        pay_type = #{record.payType,jdbcType=TINYINT},
+      <if test="record.payChannel != null">
+        pay_channel = #{record.payChannel,jdbcType=VARCHAR},
       </if>
       <if test="record.payAmount != null">
         pay_amount = #{record.payAmount,jdbcType=BIGINT},
@@ -284,7 +284,7 @@
     update pay_order
     set id = #{record.id,jdbcType=BIGINT},
       out_trade_no = #{record.outTradeNo,jdbcType=VARCHAR},
-      pay_type = #{record.payType,jdbcType=TINYINT},
+      pay_channel = #{record.payChannel,jdbcType=VARCHAR},
       pay_amount = #{record.payAmount,jdbcType=BIGINT},
       currency = #{record.currency,jdbcType=VARCHAR},
       product_id = #{record.productId,jdbcType=VARCHAR},
@@ -307,8 +307,8 @@
       <if test="outTradeNo != null">
         out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
       </if>
-      <if test="payType != null">
-        pay_type = #{payType,jdbcType=TINYINT},
+      <if test="payChannel != null">
+        pay_channel = #{payChannel,jdbcType=VARCHAR},
       </if>
       <if test="payAmount != null">
         pay_amount = #{payAmount,jdbcType=BIGINT},
@@ -352,7 +352,7 @@
   <update id="updateByPrimaryKey" parameterType="com.foochane.awpay.dao.entity.PayOrder">
     update pay_order
     set out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
-      pay_type = #{payType,jdbcType=TINYINT},
+      pay_channel = #{payChannel,jdbcType=VARCHAR},
       pay_amount = #{payAmount,jdbcType=BIGINT},
       currency = #{currency,jdbcType=VARCHAR},
       product_id = #{productId,jdbcType=VARCHAR},

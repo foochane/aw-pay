@@ -7,7 +7,7 @@ public class OrderCreateRequest {
     private String subject;
     private String body;
     private String productId;
-    private Integer payAmount;
+    private Long payAmount;
 
     public String getPayChannel() {
         return payChannel;
@@ -41,11 +41,11 @@ public class OrderCreateRequest {
         this.productId = productId;
     }
 
-    public Integer getPayAmount() {
+    public Long getPayAmount() {
         return payAmount;
     }
 
-    public void setPayAmount(Integer payAmount) {
+    public void setPayAmount(Long payAmount) {
         this.payAmount = payAmount;
     }
 }

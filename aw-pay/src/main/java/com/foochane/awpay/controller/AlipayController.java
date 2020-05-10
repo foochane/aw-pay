@@ -48,7 +48,7 @@ public class AlipayController {
         // 2 设置请求参数
         //商户订单号，商户网站订单系统中唯一订单号，必填
         String out_trade_no = "P"+System.currentTimeMillis();
-        //付款金额，必填
+        //付款金额，必填 单位：元
         String total_amount = "80";
         //订单名称，必填
         String subject = "商品购买";

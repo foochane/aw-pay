@@ -1,6 +1,6 @@
 package com.foochane.awpay.common.request;
 
-public class RefunQueryRequest {
+public class RefundQueryRequest {
 
 
     private String payChannel;

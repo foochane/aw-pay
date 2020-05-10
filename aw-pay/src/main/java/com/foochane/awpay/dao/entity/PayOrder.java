@@ -7,7 +7,7 @@ public class PayOrder {
 
     private String outTradeNo;
 
-    private Byte payType;
+    private String payChannel;
 
     private Long payAmount;
 
@@ -49,12 +49,12 @@ public class PayOrder {
         this.outTradeNo = outTradeNo == null ? null : outTradeNo.trim();
     }
 
-    public Byte getPayType() {
-        return payType;
+    public String getPayChannel() {
+        return payChannel;
     }
 
-    public void setPayType(Byte payType) {
-        this.payType = payType;
+    public void setPayChannel(String payChannel) {
+        this.payChannel = payChannel == null ? null : payChannel.trim();
     }
 
     public Long getPayAmount() {
