@@ -1,18 +1,19 @@
 package com.foochane.awpay.service;
 
+import com.alipay.api.response.*;
 import com.foochane.awpay.common.request.*;
 import com.foochane.awpay.common.result.*;
 
 
 public interface AliPayService {
 
-    Result<OrderCreateResult> create(OrderCreateRequest request);
+    Result<AlipayTradePagePayResponse>  create(OrderCreateRequest request);
 
-    Result<QueryCreateResult>  query(OrderQueryRequest request);
+    Result<AlipayTradeQueryResponse>  query(OrderQueryRequest request);
 
-    Result<OrderCloseResult> close(OrderCloseRequest request);
+    Result<AlipayTradeCloseResponse> close(OrderCloseRequest request);
 
-    Result<OrderRefundResult> refund(OrderRefundRequest request);
+    Result<AlipayTradeRefundResponse> refund(OrderRefundRequest request);
 
-    Result<RefundQueryResult> refundQuery(RefundQueryRequest request);
+    Result<AlipayTradeFastpayRefundQueryResponse> refundQuery(RefundQueryRequest request);
 }

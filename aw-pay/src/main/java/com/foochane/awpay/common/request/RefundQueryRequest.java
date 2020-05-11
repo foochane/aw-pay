@@ -4,8 +4,7 @@ public class RefundQueryRequest {
 
 
     private String outTradeNo;
-    private String payChannel;
-    private String info;
+
 
 
     public String getOutTradeNo() {
@@ -16,19 +15,4 @@ public class RefundQueryRequest {
         this.outTradeNo = outTradeNo;
     }
 
-    public String getPayChannel() {
-        return payChannel;
-    }
-
-    public void setPayChannel(String payChannel) {
-        this.payChannel = payChannel;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
 }

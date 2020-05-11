@@ -2,8 +2,6 @@ package com.foochane.awpay.common.request;
 
 public class OrderRefundRequest {
 
-
-    private String payChannel;
     private String outTradeNo;
     private String outRefundNo;
     private Long payAmount;
@@ -12,14 +10,6 @@ public class OrderRefundRequest {
 
     // refundAccount  notifyUrl 后台添加
 
-
-    public String getPayChannel() {
-        return payChannel;
-    }
-
-    public void setPayChannel(String payChannel) {
-        this.payChannel = payChannel;
-    }
 
     public String getOutTradeNo() {
         return outTradeNo;
