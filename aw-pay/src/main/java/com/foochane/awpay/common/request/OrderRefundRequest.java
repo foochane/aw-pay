@@ -4,10 +4,14 @@ public class OrderRefundRequest {
 
 
     private String payChannel;
-    private String subject;
-    private String body;
-    private String productId;
-    private Integer payAmount;
+    private String outTradeNo;
+    private String outRefundNo;
+    private Long payAmount;
+    private Long refundAmount;
+    private String refundReason;
+
+    // refundAccount  notifyUrl 后台添加
+
 
     public String getPayChannel() {
         return payChannel;
@@ -17,35 +21,43 @@ public class OrderRefundRequest {
         this.payChannel = payChannel;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getOutTradeNo() {
+        return outTradeNo;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setOutTradeNo(String outTradeNo) {
+        this.outTradeNo = outTradeNo;
     }
 
-    public String getBody() {
-        return body;
+    public String getOutRefundNo() {
+        return outRefundNo;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setOutRefundNo(String outRefundNo) {
+        this.outRefundNo = outRefundNo;
     }
 
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    public Integer getPayAmount() {
+    public Long getPayAmount() {
         return payAmount;
     }
 
-    public void setPayAmount(Integer payAmount) {
+    public void setPayAmount(Long payAmount) {
         this.payAmount = payAmount;
+    }
+
+    public Long getRefundAmount() {
+        return refundAmount;
+    }
+
+    public void setRefundAmount(Long refundAmount) {
+        this.refundAmount = refundAmount;
+    }
+
+    public String getRefundReason() {
+        return refundReason;
+    }
+
+    public void setRefundReason(String refundReason) {
+        this.refundReason = refundReason;
     }
 }

@@ -1,6 +1,8 @@
-package com.foochane.awpay.common.request;
+package com.foochane.awpay.common.result;
 
-public class RefundQueryRequest {
+import java.io.Serializable;
+
+public class QueryCreateResult implements Serializable {
 
 
     private String outTradeNo;
